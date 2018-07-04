@@ -84,6 +84,8 @@
 				<dict>
 					<key>Comment</key>
 					<string>change _DSM to XDSM</string>
+					<key>Disabled</key>
+					<false/>
 					<key>Find</key>
 					<data>
 					X0RTTQ==
@@ -96,6 +98,8 @@
 				<dict>
 					<key>Comment</key>
 					<string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
+					<key>Disabled</key>
+					<false/>
 					<key>Find</key>
 					<data>
 					T1NJRA==
@@ -108,6 +112,8 @@
 				<dict>
 					<key>Comment</key>
 					<string>change _OSI to XOSI, pair with SSDT-XOSI.aml</string>
+					<key>Disabled</key>
+					<false/>
 					<key>Find</key>
 					<data>
 					X09TSQ==
@@ -148,6 +154,8 @@
 				<dict>
 					<key>Comment</key>
 					<string>change HDAS to HDEF, optionally pair with SSDT-HDEF.aml</string>
+					<key>Disabled</key>
+					<false/>
 					<key>Find</key>
 					<data>
 					SERBUw==
@@ -160,6 +168,8 @@
 				<dict>
 					<key>Comment</key>
 					<string>Change HECI To IMEI</string>
+					<key>Disabled</key>
+					<false/>
 					<key>Find</key>
 					<data>
 					SEVDSQ==
@@ -172,6 +182,8 @@
 				<dict>
 					<key>Comment</key>
 					<string>change SAT0 to SATA, optionally pair with SSDT-SATA.aml</string>
+					<key>Disabled</key>
+					<false/>
 					<key>Find</key>
 					<data>
 					U0FUMA==
@@ -241,7 +253,7 @@
 					<key>Comment</key>
 					<string>change _STA to XSTA in device GPI0 (TouchPad I2C)</string>
 					<key>Disabled</key>
-					<true/>
+					<false/>
 					<key>Find</key>
 					<data>
 					X1NUQQ==
@@ -259,7 +271,7 @@
 					<key>Comment</key>
 					<string>change _CRS to XCRS in device TPD1 (TouchPad I2C)</string>
 					<key>Disabled</key>
-					<true/>
+					<false/>
 					<key>Find</key>
 					<data>
 					X0NSUw==
@@ -295,7 +307,7 @@
 					<key>Comment</key>
 					<string>Rename XTBT to YTBT and use with SSDT-YTBT.aml for USB-C hot plug</string>
 					<key>Disabled</key>
-					<true/>
+					<false/>
 					<key>Find</key>
 					<data>
 					pABYVEJU
@@ -309,21 +321,6 @@
 			<key>ReuseFFFF</key>
 			<false/>
 		</dict>
-		<key>DropTables</key>
-		<array>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>xh_rvp07</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>PtidDevc</string>
-			</dict>
-		</array>
 		<key>SSDT</key>
 		<dict>
 			<key>DropOem</key>
@@ -361,7 +358,7 @@
 			<string>SSDT-MCHC.aml</string>
 			<string>SSDT-MEM2.aml</string>
 			<string>SSDT-PMCR.aml</string>
-			<string>xSSDT-I2C.aml</string>
+			<string>SSDT-I2C.aml</string>
 			<string>SSDT-TYPC.aml</string>
 			<string>SSDT-YTBT.aml</string>
 		</array>
@@ -371,7 +368,7 @@
 		<key>Arguments</key>
 		<string>debug=0x12a acpi_layer=0x08 acpi_level=0x02 msgbuf=512000</string>
 		<key>DefaultVolume</key>
-		<string>macOS</string>
+		<string>HDD</string>
 		<key>NeverHibernate</key>
 		<true/>
 		<key>Secure</key>
@@ -379,15 +376,13 @@
 		<key>Timeout</key>
 		<integer>2</integer>
 		<key>XMPDetection</key>
-		<true/>
+		<integer>1</integer>
 	</dict>
 	<key>CPU</key>
 	<dict>
 		<key>FrequencyMHz</key>
 		<integer>2000</integer>
 		<key>HWPEnable</key>
-		<true/>
-		<key>UseARTFrequency</key>
 		<false/>
 	</dict>
 	<key>Devices</key>
@@ -429,15 +424,18 @@
 			<key>Speed</key>
 			<integer>8</integer>
 		</dict>
-		<key>Scan</key>
-		<true/>
 		<key>ScreenResolution</key>
-		<string>1600x900</string>
+		<string>1920x1080</string>
 		<key>Theme</key>
-		<string>HighSierra</string>
+		<string>Circla</string>
 	</dict>
 	<key>Graphics</key>
 	<dict>
+		<key>EDID</key>
+		<dict>
+			<key>Inject</key>
+			<false/>
+		</dict>
 		<key>Inject</key>
 		<dict>
 			<key>ATI</key>
@@ -447,16 +445,14 @@
 			<key>NVidia</key>
 			<false/>
 		</dict>
-		<key>InjectEDID</key>
-		<false/>
 		<key>ig-platform-id</key>
 		<string>0</string>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
-		<key>AppleRTC</key>
+		<key>AppleIntelCPUPM</key>
 		<false/>
-		<key>AsusAICPUPM</key>
+		<key>AppleRTC</key>
 		<false/>
 		<key>Debug</key>
 		<false/>
@@ -464,21 +460,25 @@
 		<true/>
 		<key>KernelCpu</key>
 		<false/>
-		<key>KernelHaswellE</key>
-		<false/>
 		<key>KernelLapic</key>
 		<false/>
 		<key>KernelPm</key>
+		<false/>
+		<key>KernelXCPM</key>
 		<false/>
 		<key>KextsToPatch</key>
 		<array>
 			<dict>
 				<key>Comment</key>
 				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext (credit RehabMan)</string>
+				<key>Disabled</key>
+				<false/>
 				<key>Find</key>
 				<data>
 				RiV1VCUwNHgA
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleBacklight</string>
 				<key>Replace</key>
@@ -495,6 +495,8 @@
 				<data>
 				AQMDAwAAIAIAAAAA
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Replace</key>
@@ -505,10 +507,14 @@
 			<dict>
 				<key>Comment</key>
 				<string>Zero 10ec0261 codec</string>
+				<key>Disabled</key>
+				<false/>
 				<key>Find</key>
 				<data>
 				YQLsEA==
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -519,10 +525,14 @@
 			<dict>
 				<key>Comment</key>
 				<string>Zero 10ec0262 codec</string>
+				<key>Disabled</key>
+				<false/>
 				<key>Find</key>
 				<data>
 				YgLsEA==
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -533,10 +543,14 @@
 			<dict>
 				<key>Comment</key>
 				<string>Zero 10ec0885 codec</string>
+				<key>Disabled</key>
+				<false/>
 				<key>Find</key>
 				<data>
 				hQjsEA==
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -547,10 +561,14 @@
 			<dict>
 				<key>Comment</key>
 				<string>Patching 11d41984 with 10ec0256 codec</string>
+				<key>Disabled</key>
+				<false/>
 				<key>Find</key>
 				<data>
 				hBnUEQ==
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
